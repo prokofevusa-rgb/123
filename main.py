@@ -7,10 +7,10 @@ app = Flask(__name__)
 def get_db():
     return psycopg2.connect(
         host='62.113.41.125',
-        port=os.environ.get('DB_PORT', '5432'),
-        database=os.environ.get('DB_NAME', 'default_db'),
-        user=os.environ.get('DB_USER', 'gen_user'),
-        password=os.environ.get('PASS_POSGRE_TIMEWEB'),
+        port=environ.get('DB_PORT', '5432'),
+        database=environ.get('DB_NAME', 'default_db'),
+        user=environ.get('DB_USER', 'gen_user'),
+        password='PASS_POSGRE_TIMEWEB',
         sslmode='disable'
     )
 
