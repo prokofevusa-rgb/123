@@ -6,12 +6,12 @@ app = Flask(__name__)
 
 def get_db():
     return psycopg2.connect(
-        host=os.environ.get('DB_HOST', 'b8e27c34221682e773e93fa.twc1.net'),
+        host='62.113.41.125',
         port=os.environ.get('DB_PORT', '5432'),
         database=os.environ.get('DB_NAME', 'default_db'),
         user=os.environ.get('DB_USER', 'gen_user'),
         password=os.environ.get('PASS_POSGRE_TIMEWEB'),
-        sslmode='require'
+        sslmode='disable'
     )
 
 @app.route('/')
