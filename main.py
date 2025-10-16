@@ -16,7 +16,30 @@ def get_db():
 
 @app.route('/')
 def home():
-    return "<h1>🎉 Flask работает!</h1><p><a href='/test'>Проверить БД</a></p>"
+    return """
+    <h1>🏢 МойСклад</h1>
+    <ul>
+        <li><a href="/regions">📍 Склады</a></li>
+        <li><a href="/moves">📦 Перемещения</a></li>
+        <li><a href="/stats">📊 Статистика</a></li>
+        <li><a href="/test">🔍 Проверка БД</a></li>
+    </ul>
+    """
+
+@app.route('/regions')
+def regions():
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM regions_moysklad')
+    regions = cur.fetchall()
+    cur.close()
+    conn.close()
+    
+    html = "<h1>📍 Склады</h1><ul>"
+    for r in regions:
+        html += f"<li>{r[1]}</li>"
+    html += "</ul><a href='/'>← Назад</a>"
+    return html
 
 @app.route('/test')
 def test():
