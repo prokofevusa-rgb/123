@@ -10,7 +10,7 @@ def get_db():
         port='5432',
         database='default_db',
         user='gen_user',
-        password='PASS_POSGRE_TIMEWEB',
+        password=os.environ.get('PASS_POSGRE_TIMEWEB'),,
         sslmode='disable'
     )
 
